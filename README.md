@@ -30,7 +30,6 @@ node.js >= 4.0
 ```
 npm install
 npm run server
-mvn spring-boot:run
 ```
 Sie finden die Anwendung unter http://localhost:9100.
 

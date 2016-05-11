@@ -1,0 +1,26 @@
+<div class="container">
+  Der Brief wird verschickt.
+
+  <ul>
+    <li>Template ID: {{ templateId }}</li>
+    <li>Versicherungsnummer: {{ contractId }}</li>
+    <li>Partner ID: {{ partnerId }}</li>
+    <li>
+      Briefe:
+      <ul>
+        {{# letters }}
+          <li>
+            {{ name }}
+            <ul>
+              <li>Ziel: {{ target }}</li>
+              <li>Original: {{ original }}</li>
+              <li>Kopie: {{ copy }}</li>
+            </ul>
+          </li>
+        {{/ letters }}
+      </ul>
+    </li>
+  </ul>
+
+  <a href="{{ roca_url }}/partners/{{ partnerId }}/contracts/{{ contractId }} ">Zurück zum Vertrag</a>
+</div>

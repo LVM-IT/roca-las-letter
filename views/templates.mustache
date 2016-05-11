@@ -1,0 +1,29 @@
+<div class="container">
+  <ol class="breadcrumb">
+    <li class="active">Vorlagenauswahl</li>
+    <li>Empfängerauswahl</li>
+  </ol>
+
+  <p>Bitte wählen Sie ein Template aus:</p>
+
+  <form action="/recipients">
+    <input type="hidden" name="contract" value="{{ contractId }}">
+    <input type="hidden" name="partner" value="{{ partnerId }}">
+    <ul>
+      {{# templates }}
+        <li>
+          <a href="#category-{{ id }}" data-toggle="collapse">{{ name }}</a>
+          <ul id="category-{{ id }}" class="panel-collapse" role="tabpanel">
+            {{# templates }}
+              <li>
+                <input type="radio" name="template" value="{{ id }}">{{ name }}</input>
+              </li>
+            {{/ templates }}
+          </ul>
+        </li>
+      {{/ templates }}
+    </ul>
+
+    <input type="submit" value="Auswählen">
+  </form>
+</div>

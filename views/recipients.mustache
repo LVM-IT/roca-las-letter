@@ -1,0 +1,44 @@
+<div class="container">
+  <ol class="breadcrumb">
+    <li><a href="/template?contractId={{ contractId }}&partnerId={{ partner }}">Vorlagenauswahl</a></li>
+    <li class="active">Empfängerauswahl</li>
+  </ol>
+
+  <p>Es soll ein Brief mit der Vorlage "{{ templateName }}" an folgende Empfänger versendet werden:</p>
+
+  <form action="/send" method="post">
+    <input type="hidden" name="template" value="{{ templateId }}">
+    <input type="hidden" name="contract" value="{{ contractId }}">
+    <input type="hidden" name="partner" value="{{ partnerId }}">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Empfänger</td>
+          <th>Rolle</td>
+          <th>Original</td>
+          <th>Kopie</td>
+          <th>Versandart</td>
+        </tr>
+      </thead>
+      <tbody>
+        {{# recipients }}
+          <tr>
+            <td>{{ name }}<input type="hidden" name="{{id}}-name" value="{{ name }}"></td>
+            <td>{{ role }}</td>
+            <td><input type="radio" name="original" value="{{ id }}" {{original}}> Original</input></td>
+            <td><input type="checkbox" name="{{id}}-copy"> Kopie</input></td>
+            <td>
+              <select name="{{id}}-target">
+                <option value="remote">Druckstraße</option>
+                <option value="local">Lokaler Druck</option>
+              </select>
+            </td>
+          </tr>
+        {{/ recipients }}
+      </tbody>
+    </table>
+
+    <input type="submit" value="Absenden">
+  </form>
+</div>
